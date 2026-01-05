@@ -3,7 +3,7 @@ import {
   fetchLatestBaileysVersion,
   DisconnectReason,
   useMultiFileAuthState,
-} from "whiskeysockets/baileys";
+} from "@whiskeysockets/baileys";
 import { Handler, Callupdate, GroupUpdate } from "./data/index.js";
 import express from "express";
 import pino from "pino";
