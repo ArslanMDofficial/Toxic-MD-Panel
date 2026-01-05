@@ -39,7 +39,7 @@ const alive = async (m, Matrix) => {
           externalAdReply: {
             showAdAttribution: true,
             title: `Arslan-MD Status`,
-            body: `Check Arsla -MD's uptime!`,
+            body: `Check Arslan-MD's uptime!`,
             sourceUrl: "https://github.com/Arslan-MD/Arslan-XMD",
             mediaType: 1,
             renderLargerThumbnail: true,
