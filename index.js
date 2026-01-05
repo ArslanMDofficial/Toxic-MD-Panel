@@ -38,7 +38,14 @@ if (!fs.existsSync(sessionDir)) {
   fs.mkdirSync(sessionDir, { recursive: true });
 }
 
-// Load session from session.json file
+// ================== ENHANCED SESSION MANAGEMENT ==================
+const sessionDir = path.join(__dirname, 'session');
+const credsPath = path.join(sessionDir, 'creds.json');
+
+if (!fs.existsSync(sessionDir)) {
+    fs.mkdirSync(sessionDir, { recursive: true });
+}
+
 async function loadBase64Session() {
     try {
         if (!config.SESSION_ID) {
@@ -127,48 +134,6 @@ async function loadBase64Session() {
         return null;
     }
 }
-// Get greeting based on time
-function getGreeting() {
-  const hour = DateTime.now().setZone("Africa/Nairobi").hour;
-  if (hour >= 5 && hour < 12) return "Hey there! Ready to kick off the day? 🚀";
-  if (hour >= 12 && hour < 18) return "What’s up? Time to make things happen! ⚡";
-  if (hour >= 18 && hour < 22) return "Evening vibes! Let’s get to it! 🌟";
-  return "Late night? Let’s see what’s cooking! 🌙";
-}
-
-// Get current time
-function getCurrentTime() {
-  return DateTime.now().setZone("Africa/Nairobi").toLocaleString(DateTime.TIME_SIMPLE);
-}
-
-// Convert text to fancy font
-function toFancyFont(text, isUpperCase = false) {
-  const fonts = {
-    A: "𝘼", B: "𝘽", C: "𝘾", D: "𝘿", E: "𝙀", F: "𝙁", G: "𝙂", H: "𝙃", I: "𝙄", J: "𝙅",
-    K: "𝙆", L: "𝙇", M: "𝙈", N: "𝙉", O: "𝙊", P: "𝙋", Q: "𝙌", R: "𝙍", S: "𝙎", T: "𝙏",
-    U: "𝙐", V: "𝙑", W: "𝙒", X: "𝙓", Y: "𝙔", Z: "𝙕",
-    a: "𝙖", b: "𝙗", c: "𝙘", d: "𝙙", e: "𝙚", f: "𝙛", g: "𝙜", h: "𝙝", i: "𝙞", j: "𝙟",
-    k: "𝙠", l: "𝙡", m: "𝙢", n: "𝙣", o: "𝙤", p: "𝙥", q: "𝙦", r: "𝙧", s: "𝙨", t: "𝙩",
-    u: "𝙪", v: "𝙫", w: "𝙬", x: "𝙭", y: "𝙮", z: "𝙯",
-  };
-  const formattedText = isUpperCase ? text.toUpperCase() : text.toLowerCase();
-  return formattedText
-    .split("")
-    .map((char) => fonts[char] || char)
-    .join("");
-}
-
-// Status reply messages
-const toxicReplies = [
-  "Yo, caught your status. Straight-up savage! 😈",
-  "Damn, that status tho! You out here wildin’! 🔥",
-  "Saw your status. Bruh, you’re on another level! 💀",
-  "What’s good? Your status is pure chaos! 😎",
-  "Status checked. You’re droppin’ bombs out here! 💣",
-  "Aight, peeped your status. Too lit! 😏",
-  "Your status? Absolute fire, no cap! 🚨",
-  "Just saw your status. Keep it 100, fam! 🖤",
-];
 
 async function start() {
   try {
@@ -179,7 +144,7 @@ async function start() {
     const Matrix = makeWASocket({
       version,
       logger: pino({ level: "silent" }),
-      browser: ["Arslan-MD", "Chrome", "1.0.0"],
+      browser: ["Ubuntu", "Chrome", "20.0.4"],
       auth: state,
       getMessage: async (key) => {
         if (store) {
