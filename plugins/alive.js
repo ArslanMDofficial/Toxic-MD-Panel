@@ -27,7 +27,7 @@ const alive = async (m, Matrix) => {
     await m.React(textEmoji);
 
     const message = `◈━━━━━━━━━━━━━━━━◈
-│❒ Toxic-MD alive - ${timeString}! ${reactionEmoji}
+│❒ Arslan-MD alive - ${timeString}! ${reactionEmoji}
 ◈━━━━━━━━━━━━━━━━◈`;
 
     await Matrix.sendMessage(
@@ -38,13 +38,13 @@ const alive = async (m, Matrix) => {
           mentionedJid: [m.sender],
           externalAdReply: {
             showAdAttribution: true,
-            title: `Toxic-MD Status`,
-            body: `Check Toxic-MD's uptime!`,
-            sourceUrl: "https://github.com/xhclintohn/Toxic-MD",
+            title: `Arslan-MD Status`,
+            body: `Check Arsla -MD's uptime!`,
+            sourceUrl: "https://github.com/Arslan-MD/Arslan-XMD",
             mediaType: 1,
             renderLargerThumbnail: true,
-            mediaUrl: "https://files.catbox.moe/zaqn1j.jpg",
-            thumbnailUrl: "https://files.catbox.moe/zaqn1j.jpg",
+            mediaUrl: "https://files.catbox.moe/16i1l7.jpg",
+            thumbnailUrl: "https://files.catbox.moe/16i1l7.jpg",
           },
         },
       },
@@ -54,7 +54,7 @@ const alive = async (m, Matrix) => {
     console.error(`❌ Alive error: ${error.message}`);
     await Matrix.sendMessage(m.from, {
       text: `◈━━━━━━━━━━━━━━━━◈
-│❒ *Toxic-MD* hit a snag! Error: ${error.message || "Failed to check status"} 😡
+│❒ *Arslan-MD* hit a snag! Error: ${error.message || "Failed to check status"} 😡
 ◈━━━━━━━━━━━━━━━━◈`,
     }, { quoted: m });
   }
