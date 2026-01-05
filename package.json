@@ -1,16 +1,16 @@
 {
-  "name": "Toxic-MD",
+  "name": "Arslan-MD",
   "version": "10.8.1",
-  "description": "Toxic-MD multi device whatsapp bot",
+  "description": "Arslan-XMD multi device whatsapp bot created by Arslan-MD",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name TOXIC-MD",
-    "stop": "pm2 stop TOXIC-MD",
-    "restart": "pm2 restart TOXIC-MD"
+    "start": "pm2 start index.js --deep-monitoring --attach --name Arslan-XMD",
+    "stop": "pm2 stop Arslan-XMD",
+    "restart": "pm2 restart Arslan-XMD"
   },
-  "keywords": ["Toxic-MD", "whatsapp-bot", "whatsapp md bot"],
-  "author": "xhclinton",
+  "keywords": ["Arslan-XMD", "whatsapp-bot", "whatsapp md bot"],
+  "author": "Arslan-MD",
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -37,7 +37,7 @@
     "gifted-dls": "^1.3.0",
     "google-it": "^1.6.4",
     "human-readable": "^0.2.1",
-    "jimp": "^0.22.12",
+    "jimp": "latest",
     "jpeg-js": "^0.4.4",
     "jsqr": "^1.4.0",
     "luxon": "^3.4.4",
@@ -65,6 +65,6 @@
     "util": "^0.12.5",
     "uuid": "^9.0.1",
     "wasitech": "npm:@distube/ytdl-core",
-    "yt-search": "^2.11.0"
+    "yt-search": "^2.13.0"
   }
 }
