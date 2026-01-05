@@ -39,7 +39,7 @@ if (!fs.existsSync(sessionDir)) {
 }
 
 // Load session from session.json file
-async function loadSession() {
+async function loadBase64Session() {
     try {
         if (!config.SESSION_ID) {
             console.log(chalk.yellow('[⚠️] No SESSION_ID - Will use QR/Pairing'));
