@@ -179,7 +179,7 @@ async function start() {
   try {
     console.log(chalk.cyan(`
 ╔══════════════════════════════════╗
-║       🚀 POWER MD BOT            ║
+║       🚀 Arslan-XMD BOT            ║
 ║     Config.cjs Session System    ║
 ╚══════════════════════════════════╝
     `));
@@ -189,7 +189,7 @@ async function start() {
 ╔══════════════════════════════════╗
 ║        📋 Bot Configuration      ║
 ╚══════════════════════════════════╝
-• Bot Name: ${config.BOT_NAME || "Power MD"}
+• Bot Name: ${config.BOT_NAME || "Arslan-XMD"}
 • Prefix: ${config.PREFIX}
 • Mode: ${config.MODE}
 • Owner: ${config.OWNER_NAME}
@@ -233,7 +233,7 @@ Please scan the QR code to login...
       auth: state,
       printQRInTerminal: !sessionLoaded, // Show QR only if no session
       getMessage: async (key) => {
-        return { conversation: config.BOT_NAME || "Power MD WhatsApp Bot" };
+        return { conversation: config.BOT_NAME || "Arslan-MD WhatsApp Bot" };
       },
     });
 
@@ -294,37 +294,64 @@ Please scan the QR code to login...
 
       if (connection === "open") {
         if (!hasSentStartMessage) {
-          const firstMessage = `
-╔══════════════════════════════════╗
-║       🎉 ${config.BOT_NAME}       ║
-╚══════════════════════════════════╝
+        const firstMessage = [
+            `◈━━━━━━━━━━━━━━━━◈`,
+            `│❒ *${getGreeting()}*`,
+            `│❒ Welcome to *Arslan-XMD*! You're now connected.`,
+            ``,
+            `✨ *Bot Name*: Arslan-XMD`,
+            `🔧 *Mode*: ${config.MODE || "public"}`,
+            `➡️ *Prefix*: ${prefix}`,
+            `🕒 *Time*: ${getCurrentTime()}`,
+            `💾 *Database*: None`,
+            `📚 *Library*: Baileys`,
+            ``,
+            `│❒ *Credits*: ᴀʀꜱʟᴀɴ-ᴍᴅ`,
+            `◈━━━━━━━━━━━━━━━━◈`,
+          ].join("\n");
 
-${getGreeting()} 
-
-🤖 *Bot Information:*
-├─ 📛 Name: ${config.BOT_NAME}
-├─ 🔧 Mode: ${config.MODE}
-├─ 🔣 Prefix: ${config.PREFIX}
-├─ 🕐 Time: ${getCurrentTime()}
-├─ 📚 Library: Baileys
-└─ 🔒 Session: ${sessionLoaded ? "From Config" : "New QR"}
-
-👑 *Owner:* ${config.OWNER_NAME}
-📞 *Contact:* ${config.OWNER_NUMBER}
-
-${config.DESCRIPTION || "⚡ Powered by Power MD"}
-          `;
+          const secondMessage = [
+            `◈━━━━━━━━━━━━━━━━◈`,
+            `│❒ Tap to view commands:`,
+            `◈━━━━━━━━━━━━━━━━◈`,
+          ].join("\n");
 
           await Matrix.sendMessage(Matrix.user.id, {
             text: firstMessage,
-            footer: `Powered by ${config.OWNER_NAME}`,
+            footer: `Powered by Arslan-MD`,
+            viewOnce: true,
             contextInfo: {
               externalAdReply: {
-                title: `🚀 ${config.BOT_NAME}`,
-                body: "Bot successfully connected!",
-                thumbnail: config.MENU_IMAGE ? { url: config.MENU_IMAGE } : undefined,
-                sourceUrl: `https://github.com/Arslan-MD/Power-MD`,
+                showAdAttribution: false,
+                title: "Arslan-XMD",
+                body: `Bot initialized successfully.`,
+                sourceUrl: `https://github.com/Arslan-MD/Arslan-XMD`,
                 mediaType: 1,
+                renderLargerThumbnail: true,
+              },
+            },
+          });
+
+          await Matrix.sendMessage(Matrix.user.id, {
+            text: secondMessage,
+            footer: `Powered by Arslan-MD`,
+            buttons: [
+              {
+                buttonId: `${prefix}menu`,
+                buttonText: { displayText: `📖 ${toFancyFont("MENU")}` },
+                type: 1,
+              },
+            ],
+            headerType: 1,
+            viewOnce: true,
+            contextInfo: {
+              externalAdReply: {
+                showAdAttribution: false,
+                title: "Arslan-XMD",
+                body: `Select to proceed.`,
+                sourceUrl: `https://github.com/Arslan-MD/Arslan-XMD`,
+                mediaType: 1,
+                renderLargerThumbnail: true,
               },
             },
           });
@@ -332,11 +359,9 @@ ${config.DESCRIPTION || "⚡ Powered by Power MD"}
           hasSentStartMessage = true;
         }
 
-        console.log(chalk.green(`
-╔══════════════════════════════════╗
-║   ✅ ${config.BOT_NAME} Connected ║
-╚══════════════════════════════════╝
-
+        console.log(chalk.green(`◈━━━━━━━━━━━━━━━━◈
+│❒ Arslan-MD connected
+◈━━━━━━━━━━━━━━━━◈  
 • User: ${Matrix.user.id}
 • Platform: WhatsApp
 • Session: ${sessionLoaded ? "Config Loaded" : "New Login"}
