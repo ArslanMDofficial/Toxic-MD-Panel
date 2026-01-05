@@ -6,9 +6,9 @@ import config from "../config.cjs";
 import axios from "axios";
 
 // Time logic
-const xtime = moment.tz("Africa/Nairobi").format("HH:mm:ss");
-const xdate = moment.tz("Africa/Nairobi").format("DD/MM/YYYY");
-const time2 = moment().tz("Africa/Nairobi").format("HH:mm:ss");
+const xtime = moment.tz("Asia/Karach").format("HH:mm:ss");
+const xdate = moment.tz("Asia/Karach").format("DD/MM/YYYY");
+const time2 = moment().tz("Asia/Karach").format("HH:mm:ss");
 let pushwish = "";
 
 if (time2 < "05:00:00") {
@@ -46,7 +46,7 @@ function toFancyFont(text, isUpperCase = false) {
 
 // Image fetch utility
 async function fetchMenuImage() {
-  const imageUrl = "https://files.catbox.moe/y2utve.jpg";
+  const imageUrl = "https://files.catbox.moe/16i1l7.jpg";
   try {
     const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
     return Buffer.from(response.data, "binary");
@@ -75,9 +75,9 @@ const menu = async (m, Matrix) => {
       const menuImage = await fetchMenuImage();
       const mainMenu = `
 ◈━━━━━━━━━━━━━━━━◈
-│❒ ${toFancyFont("Toxic-MD")} Command Menu ⚠
+│❒ ${toFancyFont("Arslan-MD")} Command Menu ⚠
 │
-│ 🤖 *${toFancyFont("Bot")}*: ${toFancyFont("Toxic-MD")}
+│ 🤖 *${toFancyFont("Bot")}*: ${toFancyFont("Arslan-MD")}
 │ 📋 *${toFancyFont("Total Commands")}*: ${totalCommands}
 │ 🔣 *${toFancyFont("Prefix")}*: ${prefix}
 │ 🌐 *${toFancyFont("Mode")}*: ${mode}
@@ -86,13 +86,13 @@ const menu = async (m, Matrix) => {
 
 ${pushwish} @${m.pushName || 'User'}! Tap a button to select a menu category:
 
-> Pσɯҽɾҽԃ Ⴆყ Tσxιƈ-ɱԃȥ
+> Pσɯҽɾҽԃ Ⴆყ ᴀʀꜱʟᴀɴ-ɱԃȥ
 `;
 
       const message = {
         text: mainMenu,
-        footer: "Pσɯҽɾҽԃ Ⴆყ Tσxιƈ-ɱԃȥ",
-        title: `${toFancyFont("Toxic-MD")} Menu`,
+        footer: "Pσɯҽɾҽԃ Ⴆყ ᴀʀꜱʟᴀɴ-ɱԃȥ",
+        title: `${toFancyFont("Arslan-MD")} Menu`,
         buttons: [
           { buttonId: `${prefix}download-menu`, buttonText: { displayText: "📥 Download" }, type: 1 },
           { buttonId: `${prefix}converter-menu`, buttonText: { displayText: "🔄 Converter" }, type: 1 },
@@ -108,10 +108,10 @@ ${pushwish} @${m.pushName || 'User'}! Tap a button to select a menu category:
         mentions: [m.sender],
         contextInfo: {
           externalAdReply: {
-            title: `${toFancyFont("Toxic-MD")} Menu`,
-            body: `${pushwish} Explore Toxic-MD's features!`,
+            title: `${toFancyFont("Arslan-MD")} Menu`,
+            body: `${pushwish} Explore Arslan-MD's features!`,
             thumbnail: menuImage || Buffer.alloc(0),
-            sourceUrl: "https://github.com/xhclintohn/Toxic-MD",
+            sourceUrl: "https://github.com/Arslan-MD/Arslan-XMD",
             mediaType: 1
           }
         }
@@ -306,9 +306,9 @@ ${pushwish} @${m.pushName || 'User'}! Tap a button to select a menu category:
 
       const fullResponse = `
 ◈━━━━━━━━━━━━━━━━◈
-│❒ ${toFancyFont("Toxic-MD")} - ${toFancyFont(menuTitle)} ⚠
+│❒ ${toFancyFont("Arslan-MD")} - ${toFancyFont(menuTitle)} ⚠
 │
-│ 🤖 *${toFancyFont("Bot")}*: ${toFancyFont("Toxic-MD")}
+│ 🤖 *${toFancyFont("Bot")}*: ${toFancyFont("Arslan-MD")}
 │ 👤 *${toFancyFont("User")}*: ${m.pushName || 'User'}
 │ 🔣 *${toFancyFont("Prefix")}*: ${prefix}
 │ 📚 *${toFancyFont("Library")}*: Baileys
@@ -316,7 +316,7 @@ ${pushwish} @${m.pushName || 'User'}! Tap a button to select a menu category:
 
 ${menuResponse}
 
-> Pσɯҽɾҽԃ Ⴆყ Tσxιƈ-ɱԃȥ
+> Pσɯҽɾҽԃ Ⴆყ ᴀʀꜱʟᴀɴ-ɱԃȥ
 `;
 
       await Matrix.sendMessage(m.from, { 
@@ -324,9 +324,9 @@ ${menuResponse}
         contextInfo: {
           mentionedJid: [m.sender],
           externalAdReply: {
-            title: `${toFancyFont("Toxic-MD")} ${toFancyFont(menuTitle)}`,
-            body: `Explore Toxic-MD's ${menuTitle.toLowerCase()} commands!`,
-            sourceUrl: "https://github.com/xhclintohn/Toxic-MD",
+            title: `${toFancyFont("Arslan-MD")} ${toFancyFont(menuTitle)}`,
+            body: `Explore Arslan-MD's ${menuTitle.toLowerCase()} commands!`,
+            sourceUrl: "https://github.com/Arslan-MD/Arslan-XMD",
             mediaType: 1
           }
         }
@@ -336,7 +336,7 @@ ${menuResponse}
     console.error(`❌ Menu error: ${error.message}`);
     await Matrix.sendMessage(m.from, {
       text: `◈━━━━━━━━━━━━━━━━◈
-│❒ *Toxic-MD* hit a snag! Error: ${error.message || "Failed to load menu"} 😡
+│❒ *Arslan-MD* hit a snag! Error: ${error.message || "Failed to load menu"} 😡
 ◈━━━━━━━━━━━━━━━━◈`,
     }, { quoted: m });
   }
